@@ -19,8 +19,8 @@ select opt in "${options[@]}"; do
 	case $opt in
 	"Autoypass on Recovery")
 		echo -e "${GRN}Bypass on Recovery"
-		if [ -d "/Volumes/Macintosh HD - Data" ]; then
-   			diskutil rename "Macintosh HD - Data" "Data"
+		if [ -d "/Volumes/MacHD - Data" ]; then
+   			diskutil rename "MacHD - Data" "Data"
    			fi
 		echo -e "${GRN}Create a new user "
         echo -e "${BLU}Press Enter to continue, Note: Leaving it blank will create an user automaticly by default named Protek "
@@ -46,16 +46,16 @@ select opt in "${options[@]}"; do
 	    dscl -f "$dscl_path" localhost -create "/Local/Default/Users/$username" NFSHomeDirectory "/Users/$username"
 	    dscl -f "$dscl_path" localhost -passwd "/Local/Default/Users/$username" "$passw"
 	    dscl -f "$dscl_path" localhost -append "/Local/Default/Groups/admin" GroupMembership $username
-		echo "0.0.0.0 deviceenrollment.apple.com" >>/Volumes/Macintosh\ HD/etc/hosts
-		echo "0.0.0.0 mdmenrollment.apple.com" >>/Volumes/Macintosh\ HD/etc/hosts
-		echo "0.0.0.0 iprofiles.apple.com" >>/Volumes/Macintosh\ HD/etc/hosts
+		echo "0.0.0.0 deviceenrollment.apple.com" >>/Volumes/MacHD/etc/hosts
+		echo "0.0.0.0 mdmenrollment.apple.com" >>/Volumes/MacHD/etc/hosts
+		echo "0.0.0.0 iprofiles.apple.com" >>/Volumes/MacHD/etc/hosts
         echo -e "${GREEN}Successfully blocked host${NC}"
 		# echo "Remove config profile"
 		touch /Volumes/Data/private/var/db/.AppleSetupDone
-        rm -rf /Volumes/Macintosh\ HD/var/db/ConfigurationProfiles/Settings/.cloudConfigHasActivationRecord
-	rm -rf /Volumes/Macintosh\ HD/var/db/ConfigurationProfiles/Settings/.cloudConfigRecordFound
-	touch /Volumes/Macintosh\ HD/var/db/ConfigurationProfiles/Settings/.cloudConfigProfileInstalled
-	touch /Volumes/Macintosh\ HD/var/db/ConfigurationProfiles/Settings/.cloudConfigRecordNotFound
+        rm -rf /Volumes/MacHD/var/db/ConfigurationProfiles/Settings/.cloudConfigHasActivationRecord
+	rm -rf /Volumes/MacHD/var/db/ConfigurationProfiles/Settings/.cloudConfigRecordFound
+	touch /Volumes/MacHD/var/db/ConfigurationProfiles/Settings/.cloudConfigProfileInstalled
+	touch /Volumes/MacHD/var/db/ConfigurationProfiles/Settings/.cloudConfigRecordNotFound
 	echo -e "${CYAN}------ Autobypass SUCCESSFULLY - Reboot machine  ------${NC}"
 	echo -e "${CYAN}------ Exit Terminal , Reset Macbook and ENJOY ! ------${NC}"
 		break
@@ -69,10 +69,10 @@ select opt in "${options[@]}"; do
         break
         ;;
     "Disable Notification (Recovery)")
-        rm -rf /Volumes/Macintosh\ HD/var/db/ConfigurationProfiles/Settings/.cloudConfigHasActivationRecord
-	rm -rf /Volumes/Macintosh\ HD/var/db/ConfigurationProfiles/Settings/.cloudConfigRecordFound
-	touch /Volumes/Macintosh\ HD/var/db/ConfigurationProfiles/Settings/.cloudConfigProfileInstalled
-	touch /Volumes/Macintosh\ HD/var/db/ConfigurationProfiles/Settings/.cloudConfigRecordNotFound
+        rm -rf /Volumes/MacHD/var/db/ConfigurationProfiles/Settings/.cloudConfigHasActivationRecord
+	rm -rf /Volumes/MacHD/var/db/ConfigurationProfiles/Settings/.cloudConfigRecordFound
+	touch /Volumes/MacHD/var/db/ConfigurationProfiles/Settings/.cloudConfigProfileInstalled
+	touch /Volumes/MacHD/var/db/ConfigurationProfiles/Settings/.cloudConfigRecordNotFound
 
         break
         ;;
